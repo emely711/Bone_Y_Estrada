@@ -33,8 +33,8 @@ En ambos ejercicios se aplicaron conceptos como:
 2. Verificar la estructura de paquetes
 3. Ejecutar las clases principales según el ejercicio:
 
-   * `Main` para el sistema de subsidio
-   * `MainBanco` para el sistema bancario
+   * Main: para el sistema de subsidio
+   * MainBanco: para el sistema bancario
 4. Ingresar los datos solicitados en consola
 5. Observar los resultados generados
 

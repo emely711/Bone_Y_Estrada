@@ -1,47 +1,46 @@
-package ec.gob.subsidio.main;
-
-import ec.gob.subsidio.modelo.SoliSubcidio;
-import java.util.Scanner;
+//PARA USAR LAS LISTAS DEBO IMPORTAR
+import java.util.List;
+import java.util.ArrayList;
 
 public class Main {
+  public static void main(String[] args) {
 
-    public static void main(String[] args) {
+    List<CuentaBancaria> cuentas = new ArrayList<>();
 
-        Scanner sc = new Scanner(System.in);
+    cuentas.add(new CuentaAhorros("001", "Ana Perez", 1200));
+    cuentas.add(new CuentaCorriente("002", "Luis Gómez", 800));
+    cuentas.add(new CuentaInversion("003", "María López", 5000));
 
-        SoliSubcidio.mostrarReglasSubsidio();
+    double totalIntereses = 0;
 
-        System.out.print("\nIngrese su nombre completo: ");
-        String nombre = sc.nextLine();
 
-        System.out.print("Ingrese su cédula: ");
-        String cedula = sc.nextLine();
+    for (int i = 0; i < cuentas.size(); i++){
+      CuentaBancaria c = cuentas.get(i);
+      c.mostrarInformacion();
+      totalIntereses += c.calcularInteres();
 
-        System.out.print("Ingrese sus ingresos mensuales: ");
-        double ingresos = sc.nextDouble();
-
-        System.out.print("Ingrese la cantidad de vehículos registrados: ");
-        int vehiculos = sc.nextInt();
-
-        System.out.print("¿Vive en Ecuador? (si/no): ");
-        String respuesta = sc.next().toLowerCase();
-        boolean vive = respuesta.equals("si");
-
-        SoliSubcidio s = new SoliSubcidio(nombre, cedula, ingresos, vehiculos, vive);
-
-        System.out.println("\n===== Datos del solicitante =====");
-        System.out.println(s);
-
-        s.generarResultado();
-
-        System.out.println("\n===== Cálculo de consumo mensual =====");
-
-        double c1 = s.calcularConsumoMensual();
-        double c2 = s.calcularConsumoMensual(80);
-
-        System.out.println("Consumo mensual estimado (sin km extra): " + c1 + " galones");
-        System.out.println("Consumo con kilómetros extra (80 km adicionales): " + c2 + " galones");
-
-        sc.close();
     }
+
+    System.out.println("\nTOTAL INTERESES DEL BANCO: " + totalIntereses);
+
+    /*
+    CuentaAhorros ahorros1 = new CuentaAhorros("001", "Ana Perez", 1200);
+    ahorros1.depositar(10);
+    ahorros1.mostrarInformacion();
+    ahorros1.retiro(4000);
+
+    CuentaCorriente corriente1 = new CuentaCorriente("002", "Luis Gómez", 800);
+    corriente1.mostrarInformacion();
+    corriente1.retiro(950);
+    corriente1.mostrarInformacion();
+
+    CuentaInversion inversion1 = new CuentaInversion("003", "María López", 5000);
+    inversion1.setSaldo(10000);
+    inversion1.retiro(100000);
+    inversion1.mostrarInformacion();
+
+  */
+
+
+  }
 }
